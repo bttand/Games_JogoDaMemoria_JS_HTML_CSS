@@ -3,7 +3,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #fc1e81;
+    background-color: #000000;
     user-select: none;
 }
 
@@ -16,17 +16,35 @@ body {
     gap: 30px;
     background: linear-gradient(323deg,
     #03001e 0%, 
-    #7303c0 30%,
-    #ec38bc 70%,
+    #3627be 30%,
+    #5e50d6 70%,
     #fdeff9 100%);
     padding:  40px 60px;
 }
 
-h2 {
+.title {
+    margin: -10px 0px;
     font-size: 3em;
     color: #fff;
     text-transform: uppercase;
     letter-spacing: 0.1em;
+}
+
+.title-menu {
+    margin-bottom: 20px;
+}
+
+.timer {
+    background-color: white;
+    color: red;
+    border-radius: 8px;
+    border: 5px solid black;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3em;
 }
 
 .reset {
@@ -39,6 +57,7 @@ h2 {
     text-transform: uppercase;
     cursor: pointer;
     font-weight: 600;
+    margin-bottom: -10px;
 }
 
 .reset:focus {
@@ -47,7 +66,7 @@ h2 {
 }
 
 .game {
-    width: 430px;
+    width: 540px;
     height: 430px;
     display: flex;
     flex-wrap: wrap;
@@ -69,10 +88,15 @@ h2 {
     transition: 0.25s;
 }
 
+.reset-menu {
+    margin-bottom: -10px;
+}
+
 .item::after {
     content: "";
     position: absolute;
     inset: 0;
+    opacity: 0.8;
     background: black;
     transition: 0.25s;
     transform: rotateY(0deg);
@@ -86,4 +110,19 @@ h2 {
 .boxOpen::after,
 .boxMatch::after {
     transform: rotateY(180deg);
+}
+
+h6 { 
+    position: relative;
+    top: 25px; 
+    font-size: 1.4em;
+}
+
+.name {
+    text-decoration: none;
+    color: inherit;
+}
+
+.name:hover {
+    color: rgb(0, 0, 97);
 }

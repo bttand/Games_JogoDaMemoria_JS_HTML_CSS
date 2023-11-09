@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jogo da Memória</title>
     <link rel="stylesheet" href="./src/styles/main.css">
     <link rel="stylesheet" href="./src/styles/reset.css">
+    <title>Jogo da Memória</title>
 </head>
 <body>
     <div class="container">
-        <h2>JOGO DA MEMÓRIA</h2>
-        <div class="game"></div>
-        <button class="reset" onclick="window.location.reload()">RESET GAME</button>
+        <h2 class="title title-menu">JOGO DA MEMÓRIA</h2>
+        <button class="reset reset-menu" id="btn-1" onclick="location.href='game.html'">FÁCIL - 60 SEGUNDOS</button>
+        <button class="reset reset-menu" id="btn-2" onclick="location.href='game.html'">MÉDIO - 30 SEGUNDOS</button>
+        <button class="reset reset-menu" id="btn-3" onclick="location.href='game.html'">GANHE NO MENOR TEMPO</button>
+    <footer class="by">
+        <h6>Criado por: <a class="name" href="https://github.com/bttand" target="_blank">Breno Andrade</a></h6>
+    </footer>
     </div>
-    
     <script src="./src/scripts/engine.js"></script>
 </body>
 </html>
