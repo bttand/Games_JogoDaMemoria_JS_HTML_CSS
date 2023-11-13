@@ -1,27 +1,27 @@
-const emojis = [
-    "🍕","🍕","🍔","🍔","🌭","🌭","🥓","🥓","🥨","🥨","🍞","🍞","🥞","🥞","🍖","🍖","🍰","🍰","🍫","🍫"
+const cards = [
+    "🍕","🍕","🍔","🍔","🌭","🌭","🥓","🥓","🍞","🍞","🥞","🥞","🍖","🍖","🍰","🍰","🍫","🍫"
 ];
 let openCards = [];
 
-function addListenerDiff() {
-    document.querySelectorAll(".reset-menu").forEach((diff) => {
-        diff.addEventListener("mousedown", () => {
-            if (diff.id === "btn-1") {
-                localStorage.setItem("diffValue", 1);
-            } else if (diff.id === "btn-2") {
-                localStorage.setItem("diffValue", 2);
-            } else if (diff.id === "btn-3") {
-                localStorage.setItem("diffValue", 3);
+function addListenerGameType() {
+    document.querySelectorAll(".btn").forEach((type) => {
+        type.addEventListener("click", () => {
+            if (type.id === "btn-1") {
+                localStorage.setItem("gameValue", 1);
+            } else if (type.id === "btn-2") {
+                localStorage.setItem("gameValue", 2);
+            } else if (type.id === "btn-3") {
+                localStorage.setItem("gameValue", 3);
             }
         })
     });
-    return localStorage.getItem('diffValue');
+    return localStorage.getItem('gameValue');
 }
 
-let getValueDiff = addListenerDiff();
+let getGameValue = addListenerGameType();
 let timer = 0;
 
-if (getValueDiff == 1) {
+if (getGameValue == 1) {
     timer = 60;
     document.getElementById('timing').textContent = '60';
     function countDown() {
@@ -32,8 +32,8 @@ if (getValueDiff == 1) {
             window.location.reload();
         }
     }
-} else if (getValueDiff == 2) {
-    document.getElementById('timing').textContent = '40';
+} else if (getGameValue == 2) {
+    document.getElementById('timing').textContent = '30';
     timer = 40;
     function countDown() {
         state.value.currentTime--;
@@ -43,7 +43,7 @@ if (getValueDiff == 1) {
             window.location.reload();
         }
     }
-} else if (getValueDiff == 3) {
+} else if (getGameValue == 3) {
     timer = 0;
     function countDown() {
         state.value.currentTime++;
@@ -61,12 +61,12 @@ const state = {
     },
 };
 
-let shuffleEmojis = emojis.sort(() => (Math.random() > 0.5) ? 2 : -1);
+let shufflecards = cards.sort(() => (Math.random() > 0.5) ? 2 : -1);
 
-for (let i = 0; i < emojis.length; i++) {
+for (let i = 0; i < cards.length; i++) {
     let box = document.createElement("div");
     box.className = "item";
-    box.innerHTML = shuffleEmojis[i];
+    box.innerHTML = shufflecards[i];
     box.onclick = handleClick;
     document.querySelector(".game").appendChild(box);
 }
@@ -90,11 +90,11 @@ function checkMatch() {
         openCards[1].classList.remove("boxOpen");
     }
     openCards = [];
-    if (document.querySelectorAll(".boxMatch").length === emojis.length) {
-        if (getValueDiff == 3) {
-            alert(`Você levou ${state.value.currentTime} segundos para terminar`);
+    if (document.querySelectorAll(".boxMatch").length === cards.length) {
+        if (getGameValue == 3) {
+            alert(`Você levou ${state.value.currentTime} segundos para terminar!!`);
             window.location.href="index.html";
-        } else if (getValueDiff == 1 || getValueDiff == 2) {
+        } else if (getGameValue == 1 || getGameValue == 2) {
             alert("Parabéns, você ganhou!!");
             window.location.href="index.html";
         }
