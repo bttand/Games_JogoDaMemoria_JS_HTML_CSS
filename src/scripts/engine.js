@@ -72,7 +72,7 @@ if (getGameValue == 1) {
     }
 } else if (getGameValue == 2) {
     document.getElementById('timing').textContent = '30';
-    timer = 40;
+    timer = 30;
     function countDown() {
         state.value.currentTime--;
         state.view.timeLeft.textContent = state.value.currentTime;
