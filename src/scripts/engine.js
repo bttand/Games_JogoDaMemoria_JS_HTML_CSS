@@ -102,6 +102,12 @@ const state = {
 let cardTotal = cardsInfo.concat(cardsInfo);
 let shufflecards = cardTotal.sort(() => (Math.random() > 0.5) ? 2 : -1);
 
+function playSound(audioName) {
+    let audio = new Audio(`./src/sounds/${audioName}`);
+    audio.volume = 0.5;
+    audio.play();
+}
+
 function putCards(shufflecards) {
     return shufflecards.forEach(card => {
         let box = document.createElement("div");
@@ -122,6 +128,7 @@ function putCards(shufflecards) {
 putCards(shufflecards);
 
 function handleClick() {
+    playSound("flip.wav");
     if (openCards.length < 2) {
         this.classList.add("boxOpen");
         openCards.push(this);
