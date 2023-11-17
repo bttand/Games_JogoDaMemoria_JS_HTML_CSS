@@ -1,4 +1,12 @@
 /* GENERAL */
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+    font-family: monospace;
+}
+
 body {
     display: flex;
     justify-content: center;
@@ -56,12 +64,22 @@ h6 {
     font-size: 1.2em;
 }
 
-.name {
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h6:nth-of-type(2) {
+    font-size: 1em;
+}
+
+.link {
     text-decoration: none;
     color: inherit;
 }
 
-.name:hover {
+.link:hover {
     color: rgb(0, 0, 115);
 }
 
@@ -102,8 +120,8 @@ h6 {
 
 .game {
     justify-content: center;
-    width: 540px;
-    height: 430px;
+    width: 560px;
+    height: 390px;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -112,25 +130,26 @@ h6 {
 }
 
 .item {
-    position: relative;
-    width: 80px;
-    height: 130px;
-    border-radius: 10px;
-    border: 4px double rgb(0, 0, 0);
+    border: 2px solid #fff;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(230, 230, 230);
-    font-size: 3em;
     transform:  rotateY(180deg);
     transition: 0.25s;
+}
+
+.item img {
+    border-radius: 5px;
+    height: 120px;
+    width: 80px;
 }
 
 .item::after {
     content: "";
     position: absolute;
     inset: 0;
-    border-radius: 5px;
+    border-radius: 7px;
     background: linear-gradient(rgb(33, 33, 130), rgb(44, 44, 173));
     transition: 0.25s;
     transform: rotateY(0deg);

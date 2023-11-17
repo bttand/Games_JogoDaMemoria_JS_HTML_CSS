@@ -1,6 +1,44 @@
-const cards = [
-    "🍕","🍕","🍔","🍔","🌭","🌭","🥓","🥓","🍞","🍞","🥞","🥞","🍖","🍖","🍰","🍰","🍫","🍫"
-];
+const path = './src/images/';
+
+cardsInfo = [
+    {
+        name: '1',
+        src: `${path}1.jpg`,
+    },
+    {
+        name: '2',
+        src: `${path}2.jpg`,
+    },
+    {
+        name: '3',
+        src: `${path}3.jpg`,
+    },
+    {
+        name: '4',
+        src: `${path}4.jpg`,
+    },
+    {
+        name: '5',
+        src: `${path}5.jpg`,
+    },
+    {
+        name: '6',
+        src: `${path}6.jpg`,
+    },
+    {
+        name: '7',
+        src: `${path}7.jpg`,
+    },
+    {
+        name: '8',
+        src: `${path}8.jpg`,
+    },
+    {
+        name: '9',
+        src: `${path}9.jpg`,
+    },
+]
+
 let openCards = [];
 
 function addListenerGameType() {
@@ -61,15 +99,27 @@ const state = {
     },
 };
 
-let shufflecards = cards.sort(() => (Math.random() > 0.5) ? 2 : -1);
+let cardTotal = cardsInfo.concat(cardsInfo);
+let shufflecards = cardTotal.sort(() => (Math.random() > 0.5) ? 2 : -1);
 
-for (let i = 0; i < cards.length; i++) {
-    let box = document.createElement("div");
-    box.className = "item";
-    box.innerHTML = shufflecards[i];
-    box.onclick = handleClick;
-    document.querySelector(".game").appendChild(box);
+function putCards(shufflecards) {
+    return shufflecards.forEach(card => {
+        let box = document.createElement("div");
+        let cardImg = document.createElement("img");
+        box.className = "item";
+        box.appendChild(cardImg);
+        cardImg.className = "itemImg";
+        cardImg.src = card.src;
+        cardImg.alt = card.name;
+        cardImg.width = "80";
+        cardImg.height = "100";
+        
+        box.onclick = handleClick;
+        document.querySelector(".game").appendChild(box);
+    });
 }
+
+putCards(shufflecards);
 
 function handleClick() {
     if (openCards.length < 2) {
@@ -90,7 +140,7 @@ function checkMatch() {
         openCards[1].classList.remove("boxOpen");
     }
     openCards = [];
-    if (document.querySelectorAll(".boxMatch").length === cards.length) {
+    if (document.querySelectorAll(".boxMatch").length === cardsInfo.length * 2) {
         if (getGameValue == 3) {
             alert(`Você levou ${state.value.currentTime} segundos para terminar!!`);
             window.location.href="index.html";
